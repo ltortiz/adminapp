@@ -59,16 +59,19 @@ const TabNavigator = () => {
         component={HomeScreen}
         options={{ tabBarLabel: 'Home' }}
       />
+
       <Tab.Screen
         name="Social"
         component={SocialScreen}
         options={{ tabBarLabel: 'Social' }}
       />
+
       <Tab.Screen
         name="Gestionar"
         component={ManageScreen}
         options={{ tabBarLabel: 'Gestionar' }}
       />
+      
       <Tab.Screen
         name="Explorar"
         component={ExploreScreen}
