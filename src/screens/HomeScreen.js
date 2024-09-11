@@ -1,23 +1,31 @@
 import React from 'react';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import Card from '../components/CardComponent';
 import theme from '../theme/theme';
 
 const data = [
-  { id: '1', icon: 'reader-outline', title: 'PQRS', badgeValue: '5' },
-  { id: '2', icon: 'calendar-outline', title: 'Reservas', badgeValue: '3' },
-  { id: '3', icon: 'megaphone-outline', title: 'Anuncios' },
-  { id: '4', icon: 'people-outline', title: 'Residentes' },
+  { id: '1', icon: 'reader-outline', title: 'PQRS', badgeValue: '5', route: '' },
+  { id: '2', icon: 'calendar-outline', title: 'Reservas', badgeValue: '3', route: '' },
+  { id: '3', icon: 'megaphone-outline', title: 'Anuncios', route: 'Anuncios' },
+  { id: '4', icon: 'people-outline', title: 'Residentes', route: '' },
 ];
 
 const HomeScreen = () => {
+  const navigation = useNavigation();
+
+  const handlePress = (route) => {
+    navigation.navigate(route);
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Acceso Rápido</Text>
       <FlatList
         data={data}
         renderItem={({ item }) => (
-          <Card icon={item.icon} title={item.title} badgeValue={item.badgeValue} />
+          <Card icon={item.icon} title={item.title} badgeValue={item.badgeValue} onPress={() => handlePress(item.route)}
+          />
         )}
         keyExtractor={(item) => item.id}
         numColumns={3}

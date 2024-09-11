@@ -14,6 +14,8 @@ const colors = {
   success: '#98CE00',    // Color para éxito
   warning: '#FFD071',    // Color para advertencias
   info: '#99AFF5',       // Color para información
+  surface: '#F5F5F5',       // Color para superficies
+  onSurface: '#1E1E1E',       // Color dentro de superficies
 };
 
 export default colors;

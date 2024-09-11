@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Dimensions,TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Badge } from 'react-native-elements';
 import theme from '../theme/theme';
@@ -7,9 +7,9 @@ import theme from '../theme/theme';
 const { width } = Dimensions.get('window');
 const CARD_WIDTH = (width / 3) - (theme.spacing.large * 1.5);
 
-const CardComponent = ({ icon, title, badgeValue }) => {
+const CardComponent = ({ icon, title, badgeValue, onPress }) => {
   return (
-    <View style={styles.card}>
+    <TouchableOpacity onPress={onPress} style={styles.card}>
       <View>
         <Icon name={icon} size={32} color={theme.colors.secondaryContainer} style={styles.icon} />
         {parseInt(badgeValue) > 0 && (
@@ -17,7 +17,7 @@ const CardComponent = ({ icon, title, badgeValue }) => {
         )}
       </View>
       <Text style={styles.text}>{title}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 
