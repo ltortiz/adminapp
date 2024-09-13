@@ -8,12 +8,11 @@ const { width } = Dimensions.get('window');
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('leidy@correo.com');
-  const [password, setPassword] = useState('123456789');
+  const [password, setPassword] = useState('123456');
 
   const handleLogin = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      Alert.alert('¡Inicio de sesión exitoso!');
       navigation.navigate('TabNav');
     } catch (error) {
       console.log(error.message);
@@ -46,6 +45,9 @@ const LoginScreen = ({ navigation }) => {
         onPress={handleLogin}
       >
         <Text style={styles.buttonText}>Inicio de Sesión</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+        <Text style={styles.linkText}>¿No tienes una cuenta? Regístrate aquí</Text>
       </TouchableOpacity>
     </View>
   );
@@ -82,8 +84,8 @@ const styles = StyleSheet.create({
     height: 40,
     borderWidth: 1,
     borderRadius: 8,
-    marginBottom: 12,
-    paddingHorizontal: 12,
+    marginBottom: theme.spacing.medium,
+    paddingHorizontal: theme.spacing.medium,
     marginBottom: theme.spacing.medium,
     borderColor: theme.colors.outline,
     backgroundColor: "#FFFFFF",
@@ -100,6 +102,14 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: theme.fontSizes.medium,
     color: theme.colors.onPrimary,
+  },
+  linkText: {
+    fontFamily: theme.fonts.italic,
+    fontSize: theme.fontSizes.medium,
+    marginTop: theme.spacing.extraLarge,
+    color: theme.colors.onSurface,
+    textAlign: 'center',
+    textDecorationLine: 'underline',
   },
 });
 

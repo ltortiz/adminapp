@@ -9,6 +9,7 @@ const theme = {
     semibold: 'OpenSans-SemiBold', //{ fontFamily: 'Open Sans', fontWeight: 600, fontStyle: 'normal' },
     bold: 'OpenSans-Bold', //{ fontFamily: 'Open Sans', fontWeight: 700, fontStyle: 'normal' },
     extrabold: 'OpenSans-ExtraBold', //{ fontFamily: 'Open Sans', fontWeight: 800, fontStyle: 'normal' },
+    italic: 'OpenSans-Italic',
   },
   spacing: {
     extraSmall: 4,

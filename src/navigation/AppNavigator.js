@@ -5,9 +5,12 @@ import LoginScreen from '../screens/LoginScreen';
 import AnunciosScreen from '../screens/AnunciosScreen';
 import AnunciosDetalleScreen from '../screens/AnunciosDetalleScreen';
 import TabNavigator from './TabNavigator';
+import RegisterScreen from '../screens/RegisterScreen';
+import ProfileScreen from '../screens/ProfileScreen';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import theme from '../theme/theme';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, TouchableOpacity, Image } from 'react-native';
+
 const Stack = createNativeStackNavigator();
 
 
@@ -16,7 +19,28 @@ const AppNavigator = () => {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
         <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="TabNav" component={TabNavigator} options={{ headerShown: false }} />
+        <Stack.Screen name="Register" component={RegisterScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="TabNav" component={TabNavigator} options={({ navigation }) => ({
+          title: '',
+          headerRight: () => (
+            <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+              <Image source={{ uri: "https://cdn-icons-png.flaticon.com/256/149/149071.png" }} style={styles.image} />
+            </TouchableOpacity>
+          ),
+        })} />
+
+        <Stack.Screen name="Profile" component={ProfileScreen} options={({ navigation }) => ({
+          headerLeft: () => (
+            <Icon
+              name="arrow-back"
+              size={theme.fontSizes.extraLarge}
+              color={theme.colors.onSurface}
+              style={styles.icon}
+              onPress={() => navigation.goBack()}
+            />
+          ),
+          title: 'Mi Perfil',
+        })} />
 
         <Stack.Screen
           name="Anuncios"
@@ -70,6 +94,10 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.onPrimary,
     elevation: 0,
     shadowOpacity: 0,
+  },
+  image: {
+    width: 32,
+    height: 32
   },
 });
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import AppNavigator from './src/navigation/AppNavigator';
 import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
+import { AuthProvider } from './src/context/AuthContext'
 
 SplashScreen.preventAutoHideAsync();
 
@@ -13,6 +14,7 @@ const fetchFonts = () => {
     'OpenSans-SemiBold': require('./assets/fonts/OpenSans-SemiBold.ttf'),
     'OpenSans-Bold': require('./assets/fonts/OpenSans-Bold.ttf'),
     'OpenSans-ExtraBold': require('./assets/fonts/OpenSans-ExtraBold.ttf'),
+    'OpenSans-Italic': require('./assets/fonts/OpenSans-Italic.ttf'),
   });
 };
 
@@ -39,6 +41,8 @@ export default function App() {
   }
 
   return (
-    <AppNavigator />
+    <AuthProvider>
+      <AppNavigator />
+    </AuthProvider>
   );
 }

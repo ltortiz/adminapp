@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, BackHandler, Alert } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import HomeScreen from '../screens/HomeScreen';
@@ -7,10 +7,30 @@ import SocialScreen from '../screens/SocialScreen';
 import ManageScreen from '../screens/ManageScreen';
 import ExploreScreen from '../screens/ExploreScreen';
 import theme from '../theme/theme';
+import { useFocusEffect } from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
+  useFocusEffect(
+    React.useCallback(() => {
+      const onBackPress = () => {
+        Alert.alert(
+          'Salir',
+          '¿Estás seguro que quieres salir de la aplicación?',
+          [
+            { text: 'Cancelar', style: 'cancel', onPress: () => null },
+            { text: 'Salir', onPress: () => BackHandler.exitApp() },
+          ],
+          { cancelable: true }
+        );
+        return true; // Bloquea la acción de volver atrás
+      };
+      BackHandler.addEventListener('hardwareBackPress', onBackPress);
+      return () => BackHandler.removeEventListener('hardwareBackPress', onBackPress);
+    }, [])
+  );
+
   return (
     <Tab.Navigator
       initialRouteName="Home"
@@ -57,25 +77,25 @@ const TabNavigator = () => {
       <Tab.Screen
         name="Home"
         component={HomeScreen}
-        options={{ tabBarLabel: 'Home' }}
+        options={{ headerShown: false, tabBarLabel: 'Home' }}
       />
 
       <Tab.Screen
         name="Social"
         component={SocialScreen}
-        options={{ tabBarLabel: 'Social' }}
+        options={{ headerShown: false, tabBarLabel: 'Social' }}
       />
 
       <Tab.Screen
         name="Gestionar"
         component={ManageScreen}
-        options={{ tabBarLabel: 'Gestionar' }}
+        options={{ headerShown: false, tabBarLabel: 'Gestionar' }}
       />
-      
+
       <Tab.Screen
         name="Explorar"
         component={ExploreScreen}
-        options={{ tabBarLabel: 'Explorar' }}
+        options={{ headerShown: false, tabBarLabel: 'Explorar' }}
       />
     </Tab.Navigator>
   );
