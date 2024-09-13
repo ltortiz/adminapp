@@ -3,6 +3,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from '../screens/LoginScreen';
 import AnunciosScreen from '../screens/AnunciosScreen';
+import ReservasScreen from '../screens/ReservasScreen';
+import GestionarReservaScreen from '../screens/GestionarReservaScreen';
 import AnunciosDetalleScreen from '../screens/AnunciosDetalleScreen';
 import TabNavigator from './TabNavigator';
 import RegisterScreen from '../screens/RegisterScreen';
@@ -73,6 +75,40 @@ const AppNavigator = () => {
               />
             ),
             title: 'Detalle',
+          })}
+        />
+
+        <Stack.Screen
+          name="Reservas"
+          component={ReservasScreen}
+          options={({ navigation }) => ({
+            headerLeft: () => (
+              <Icon
+                name="arrow-back"
+                size={theme.fontSizes.extraLarge}
+                color={theme.colors.onSurface}
+                style={styles.icon}
+                onPress={() => navigation.goBack()}
+              />
+            ),
+            title: 'Reservas',
+          })}
+        />
+
+        <Stack.Screen
+          name="GestionarReserva"
+          component={GestionarReservaScreen}
+          options={({ navigation }) => ({
+            headerLeft: () => (
+              <Icon
+                name="arrow-back"
+                size={theme.fontSizes.extraLarge}
+                color={theme.colors.onSurface}
+                style={styles.icon}
+                onPress={() => navigation.goBack()}
+              />
+            ),
+            title: 'Gestionar Reserva',
           })}
         />
       </Stack.Navigator>

@@ -83,16 +83,16 @@ const RegisterScreen = ({ navigation }) => {
       ) : (
         <View style={styles.containerButtons}>
           <TouchableOpacity
-            style={[styles.button, { backgroundColor: theme.colors.secondaryContainer }]}
-            onPress={handleRegister}
-          >
-            <Text style={[styles.buttonText, { color: theme.colors.onSecondary }]}>Registrarse</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
             style={[styles.button, { borderColor: theme.colors.secondaryContainer, borderWidth: 1 }]}
             onPress={() => navigation.navigate('Login')}
           >
             <Text style={[styles.buttonText, { color: theme.colors.secondaryContainer }]}>Volver</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.button, { backgroundColor: theme.colors.secondaryContainer }]}
+            onPress={handleRegister}
+          >
+            <Text style={[styles.buttonText, { color: theme.colors.onSecondary }]}>Registrarse</Text>
           </TouchableOpacity>
         </View>
       )}
