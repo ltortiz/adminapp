@@ -7,8 +7,8 @@ import theme from '../theme/theme';
 const { width } = Dimensions.get('window');
 
 const LoginScreen = ({ navigation }) => {
-  const [email, setEmail] = useState('leidy@correo.com');
-  const [password, setPassword] = useState('123456');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleLogin = async () => {
     try {

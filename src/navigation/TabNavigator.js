@@ -6,6 +6,7 @@ import HomeScreen from '../screens/HomeScreen';
 import SocialScreen from '../screens/SocialScreen';
 import ManageScreen from '../screens/ManageScreen';
 import ExploreScreen from '../screens/ExploreScreen';
+import UnderConstructionScreen from '../screens/UnderConstructionScreen';
 import theme from '../theme/theme';
 import { useFocusEffect } from '@react-navigation/native';
 
@@ -82,19 +83,19 @@ const TabNavigator = () => {
 
       <Tab.Screen
         name="Social"
-        component={SocialScreen}
+        component={UnderConstructionScreen}
         options={{ headerShown: false, tabBarLabel: 'Social' }}
       />
 
       <Tab.Screen
         name="Gestionar"
-        component={ManageScreen}
+        component={UnderConstructionScreen}
         options={{ headerShown: false, tabBarLabel: 'Gestionar' }}
       />
 
       <Tab.Screen
         name="Explorar"
-        component={ExploreScreen}
+        component={UnderConstructionScreen}
         options={{ headerShown: false, tabBarLabel: 'Explorar' }}
       />
     </Tab.Navigator>

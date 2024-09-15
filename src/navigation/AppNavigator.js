@@ -9,6 +9,7 @@ import AnunciosDetalleScreen from '../screens/AnunciosDetalleScreen';
 import TabNavigator from './TabNavigator';
 import RegisterScreen from '../screens/RegisterScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import UnderConstructionScreen from '../screens/UnderConstructionScreen';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import theme from '../theme/theme';
 import { StyleSheet, TouchableOpacity, Image } from 'react-native';
@@ -23,7 +24,10 @@ const AppNavigator = () => {
         <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Register" component={RegisterScreen} options={{ headerShown: false }} />
         <Stack.Screen name="TabNav" component={TabNavigator} options={({ navigation }) => ({
-          title: '',
+          title: 'AdminApp',
+          headerLeft: () => (
+            <></>
+          ),
           headerRight: () => (
             <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
               <Image source={{ uri: "https://cdn-icons-png.flaticon.com/256/149/149071.png" }} style={styles.image} />
@@ -111,6 +115,31 @@ const AppNavigator = () => {
             title: 'Gestionar Reserva',
           })}
         />
+
+        <Stack.Screen name="PQRS" component={UnderConstructionScreen} options={({ navigation }) => ({
+          headerLeft: () => (
+            <Icon
+              name="arrow-back"
+              size={theme.fontSizes.extraLarge}
+              color={theme.colors.onSurface}
+              style={styles.icon}
+              onPress={() => navigation.goBack()}
+            />
+          ),
+          title: 'PQRS',
+        })} />
+        <Stack.Screen name="Residentes" component={UnderConstructionScreen} options={({ navigation }) => ({
+          headerLeft: () => (
+            <Icon
+              name="arrow-back"
+              size={theme.fontSizes.extraLarge}
+              color={theme.colors.onSurface}
+              style={styles.icon}
+              onPress={() => navigation.goBack()}
+            />
+          ),
+          title: 'Residentes',
+        })} />
       </Stack.Navigator>
     </NavigationContainer>
   );

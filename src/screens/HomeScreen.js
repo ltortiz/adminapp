@@ -5,10 +5,10 @@ import Card from '../components/CardComponent';
 import theme from '../theme/theme';
 
 const data = [
-  { id: '1', icon: 'reader-outline', title: 'PQRS', badgeValue: '1', route: '' },
+  { id: '1', icon: 'reader-outline', title: 'PQRS', badgeValue: '1', route: 'PQRS' },
   { id: '2', icon: 'calendar-outline', title: 'Reservas', badgeValue: '5', route: 'Reservas' },
   { id: '3', icon: 'megaphone-outline', title: 'Anuncios', route: 'Anuncios' },
-  { id: '4', icon: 'people-outline', title: 'Residentes', route: '' },
+  { id: '4', icon: 'people-outline', title: 'Residentes', route: 'Residentes' },
 ];
 
 const HomeScreen = () => {
